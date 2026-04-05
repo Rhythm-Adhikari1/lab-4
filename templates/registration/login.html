@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="eyebrow">Authentication</div>
+    <h2>Login</h2>
+    <p class="muted">Sign in to place orders and submit feedback.</p>
+    {% if form.errors %}
+        <div class="msg field-error">Please correct the errors below and try again.</div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="row">
+            <button type="submit">Login</button>
+            <a class="button button-outline" href="/register/">Create Account</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

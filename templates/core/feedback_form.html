@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="eyebrow">User Experience</div>
+    <h2>Submit Feedback (Stored as JSON Document)</h2>
+    <p class="muted">Your feedback is stored as a flexible JSON document for NoSQL-style analysis.</p>
+    {% if form.errors %}
+        <div class="msg field-error">Please correct the feedback form errors and submit again.</div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="row">
+            <button type="submit">Submit Feedback</button>
+            <a class="button button-outline" href="/">Back</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

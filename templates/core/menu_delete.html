@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="eyebrow">Danger Zone</div>
+    <h2>Delete Menu Item</h2>
+    <p>Are you sure you want to delete <strong>{{ item.name }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <button class="button-danger" type="submit">Confirm Delete</button>
+            <a class="button button-outline" href="/menu/">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

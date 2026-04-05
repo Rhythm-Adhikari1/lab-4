@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="eyebrow">Menu Management</div>
+    <h2>{{ title }}</h2>
+    {% if form.errors %}
+        <div class="msg field-error">Please fix the menu item fields marked below.</div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="row">
+            <button type="submit">Save</button>
+            <a class="button button-outline" href="/menu/">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

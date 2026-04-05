@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="hero">
+    <div>
+        <div class="eyebrow">Campus Canteen Snapshot</div>
+        <h1>Dashboard</h1>
+        <p class="muted">Track activity, browse menu insights, and manage your canteen workflow.</p>
+    </div>
+</div>
+
+<div class="stat-grid">
+    <div class="stat-card">
+        <div class="stat-label">Session Visits</div>
+        <div class="stat-value">{{ visit_count }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Current Theme</div>
+        <div class="stat-value">{{ selected_theme }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Available Menu Items</div>
+        <div class="stat-value">{{ menu_count }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Total Orders</div>
+        <div class="stat-value">{{ order_count }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Avg Feedback Rating</div>
+        <div class="stat-value">{{ avg_feedback }}</div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Quick Actions</h3>
+    <div class="row">
+        <a class="button" href="/menu/">Browse Menu</a>
+        <a class="button button-outline" href="/order/new/">Place an Order</a>
+        <a class="button button-outline" href="/feedback/new/">Send Feedback</a>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Theme Switcher</h3>
+    <p class="muted">The selected theme is saved in your session.</p>
+    <div class="row">
+        <a class="button button-outline" href="/theme/mint/">Mint</a>
+        <a class="button button-outline" href="/theme/solar/">Solar</a>
+        <a class="button button-outline" href="/theme/classic/">Classic</a>
+    </div>
+</div>
+{% endblock %}

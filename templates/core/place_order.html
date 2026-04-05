@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="eyebrow">Order Workflow</div>
+    <h2>Place Order</h2>
+    <p class="muted">Select an available menu item and quantity, then submit your order.</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="row">
+            <button type="submit">Create Order</button>
+            <a class="button button-outline" href="/menu/">Back to Menu</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

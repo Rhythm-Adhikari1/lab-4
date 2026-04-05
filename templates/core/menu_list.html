@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="hero">
+        <div>
+            <div class="eyebrow">Food Catalog</div>
+            <h2>Menu Items</h2>
+        </div>
+        {% if user.is_staff %}
+            <a class="button" href="/menu/new/">Create New Item</a>
+        {% endif %}
+    </div>
+    {% if user.is_staff %}
+        <p class="muted">Staff accounts can create, edit, and delete menu items.</p>
+    {% endif %}
+
+    <div class="list-grid">
+        {% for item in items %}
+            <div class="card">
+                <div class="item-title">
+                    <strong>{{ item.name }}</strong>
+                    <span class="price">${{ item.price }}</span>
+                </div>
+                <p class="muted">Category: {{ item.category.name }}</p>
+                <div class="row">
+                    {% if item.is_available %}
+                        <span class="pill pill-ok">Available</span>
+                    {% else %}
+                        <span class="pill pill-warn">Unavailable</span>
+                    {% endif %}
+                    <span class="pill">Stock: {{ item.stock }}</span>
+                </div>
+                {% if user.is_staff %}
+                    <div class="row" style="margin-top: 10px;">
+                        <a class="button button-outline" href="/menu/{{ item.id }}/edit/">Edit</a>
+                        <a class="button button-danger" href="/menu/{{ item.id }}/delete/">Delete</a>
+                    </div>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No menu items yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

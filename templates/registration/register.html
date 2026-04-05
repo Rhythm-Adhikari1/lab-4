@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="eyebrow">New User</div>
+    <h2>Create Account</h2>
+    <p class="muted">Create your account to start ordering from SmartCanteen.</p>
+    {% if form.errors %}
+        <div class="msg field-error">Please fix the highlighted registration errors.</div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="row">
+            <button type="submit">Register</button>
+            <a class="button button-outline" href="/accounts/login/">Already have an account?</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
